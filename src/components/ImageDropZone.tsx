@@ -11,6 +11,17 @@ export interface ImageDropZoneProps {
   placeholder?: ReactNode;
   /** Style applied to outer wrapper (size, background, etc). */
   style?: React.CSSProperties;
+  /**
+   * Whether an image is currently loaded inside the drop zone. When `false`
+   * (the default) and children ARE provided, the kit renders an absolute
+   * positioned `<label>` overlay with hidden `<input type="file">` so click
+   * also opens the file picker. When `true`, the overlay is hidden so
+   * children (e.g. a Konva canvas with draggable image) can receive clicks.
+   *
+   * Has no effect when children are NOT provided (the default placeholder
+   * already handles click-to-upload via its own label).
+   */
+  imageLoaded?: boolean;
 }
 
 /**
@@ -29,6 +40,7 @@ export function ImageDropZone({
   children,
   placeholder,
   style,
+  imageLoaded,
 }: ImageDropZoneProps) {
   const [dragOver, setDragOver] = useState(false);
 
@@ -79,6 +91,19 @@ export function ImageDropZone({
               or click
             </span>
           )}
+          <input
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={(e) => handleFile(e.target.files?.[0])}
+          />
+        </label>
+      )}
+      {children && !imageLoaded && (
+        <label
+          className="absolute inset-0 z-10 cursor-pointer"
+          aria-label="Click to upload image"
+        >
           <input
             type="file"
             accept="image/*"

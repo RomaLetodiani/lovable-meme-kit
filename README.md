@@ -64,6 +64,17 @@ export const Route = createFileRoute("/")({
 - `<RangeSlider />` — labeled slider for tunable scalar params (intensity, blur, etc).
 - `<MadeWithMemeKitFooter />` — drop-in footer with npm + GitHub + demo + Lovable links.
 - `<TemplateMemeCanvas />` — Konva-based composition canvas for meme generators with a static template + draggable user-image hotspots. Use for "subject + template overlay" memes (e.g. Old Man Yells, Stonks-ify, GOAT-ify).
+- `<MemeAppLayout />` — canonical page wrapper for kit-built meme generators (min-h-screen, bg-background, centered column).
+- `<MemeAppMain />` — canonical main-content wrapper (max-width, centered gap, mt-6).
+- `<MemeActions />` — canonical button row (flex, centered, gap-2, wrap).
+
+`<ImageDropZone>` accepts `imageLoaded?: boolean` to enable an absolute click-to-upload overlay when children are provided (so canvas apps still get click-to-upload). Pass `imageLoaded={imageState != null}`.
+
+**Live preview animations** (apply to your loaded image preview to approximate the GIF output):
+- `animate-intensify` — random shake (Your Logo Intensifies pattern).
+- `animate-bob` — slow vertical bob (Party-ify pattern).
+- `animate-strobe` — rainbow hue-rotate cycle (Star Power pattern).
+- `animate-bop` — fast head-bop translate (Catjam-ify pattern).
 
 ## Hooks
 
