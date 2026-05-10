@@ -25,6 +25,17 @@ export type { RangeSliderProps } from "../components/RangeSlider";
 export { MadeWithMemeKitFooter } from "../components/MadeWithMemeKitFooter";
 export type { MadeWithMemeKitFooterProps } from "../components/MadeWithMemeKitFooter";
 
+export { TemplateMemeCanvas } from "../components/TemplateMemeCanvas";
+export type {
+  TemplateMemeCanvasProps,
+  TemplateConfig,
+  HotspotConfig,
+  CanvasAnchor,
+} from "../components/TemplateMemeCanvas";
+
+export { exportStageToPng } from "./export-stage-to-png";
+export type { ExportStageToPngOptions } from "./export-stage-to-png";
+
 export { useImageFile } from "./use-image-file";
 export type { ImageFileState, UseImageFileResult } from "./use-image-file";
 

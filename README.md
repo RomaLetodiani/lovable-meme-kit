@@ -63,6 +63,7 @@ export const Route = createFileRoute("/")({
 - `<MemeButton />` — kit-styled button (variants: `primary`, `secondary`).
 - `<RangeSlider />` — labeled slider for tunable scalar params (intensity, blur, etc).
 - `<MadeWithMemeKitFooter />` — drop-in footer with npm + GitHub + demo + Lovable links.
+- `<TemplateMemeCanvas />` — Konva-based composition canvas for meme generators with a static template + draggable user-image hotspots. Use for "subject + template overlay" memes (e.g. Old Man Yells, Stonks-ify, GOAT-ify).
 
 ## Hooks
 
@@ -74,6 +75,7 @@ export const Route = createFileRoute("/")({
 - `memeHead()` — TanStack Router `head()` helper (meta, OG, Twitter, canonical, JSON-LD WebApplication).
 - `DEFAULT_MEME_COLORS` — palette including the `"transparent"` sentinel.
 - `DEFAULT_MEME_BG` — recommended initial background (`"transparent"`).
+- `exportStageToPng(stage, options?)` — trigger a PNG download of a Konva stage; hides Transformer handles before export.
 
 ## Requirements
 
