@@ -160,6 +160,8 @@ function HotspotNode({ config, isSelected, onSelect }: HotspotNodeProps) {
         y={y}
         width={w}
         height={h}
+        name="hotspot-image"
+        data-hotspot-id={config.id}
         draggable={draggable}
         onClick={onSelect}
         onTap={onSelect}
@@ -227,10 +229,11 @@ export function TemplateMemeCanvas({
     >
       <Layer>
         {bgColor !== "transparent" ? (
-          <Rect x={0} y={0} width={width} height={height} fill={bgColor} />
+          <Rect id="bg-rect" x={0} y={0} width={width} height={height} fill={bgColor} />
         ) : null}
         {template && templateImg ? (
           <KImage
+            id="template"
             name="template-image"
             image={templateImg}
             x={templatePos.x}

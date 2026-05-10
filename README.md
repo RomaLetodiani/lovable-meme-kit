@@ -69,6 +69,7 @@ export const Route = createFileRoute("/")({
 
 - `useImageFile()` — file upload state + FileReader → dataURL → HTMLImageElement.
 - `useGifEncoder()` — gifenc-based animated GIF encoder with magenta chroma-key for transparent export. Pass a per-frame `drawFrame` callback.
+- `useTemplateMemeGif()` — animated GIF export hook for `<TemplateMemeCanvas>`-composed memes. Snapshots the live stage at generate() time (preserving user's drag/transform), then renders N frames with optional per-frame animation deltas. Use for canvas + GIF combo apps (Catjam-ify, etc).
 
 ## Helpers
 

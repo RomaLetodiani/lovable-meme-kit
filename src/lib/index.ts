@@ -42,5 +42,12 @@ export type { ImageFileState, UseImageFileResult } from "./use-image-file";
 export { useGifEncoder } from "./use-gif-encoder";
 export type { UseGifEncoderOptions, UseGifEncoderResult } from "./use-gif-encoder";
 
+export { useTemplateMemeGif } from "./use-template-meme-gif";
+export type {
+  UseTemplateMemeGifOptions,
+  UseTemplateMemeGifResult,
+  MemeGifAnimation,
+} from "./use-template-meme-gif";
+
 export { memeHead } from "./meme-seo";
 export type { MemeHeadInput } from "./meme-seo";
