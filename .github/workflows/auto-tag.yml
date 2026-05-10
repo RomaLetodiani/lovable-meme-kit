@@ -1,0 +1,45 @@
+name: Auto-tag on version bump
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'package.json'
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read package version
+        id: version
+        run: echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Check if tag exists
+        id: tag_check
+        run: |
+          if git rev-parse "v${{ steps.version.outputs.VERSION }}" >/dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create and push tag
+        if: steps.tag_check.outputs.exists == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag "v${{ steps.version.outputs.VERSION }}"
+          git push origin "v${{ steps.version.outputs.VERSION }}"
+
+      - name: Create GitHub Release
+        if: steps.tag_check.outputs.exists == 'false'
+        run: gh release create "v${{ steps.version.outputs.VERSION }}" --generate-notes --title "v${{ steps.version.outputs.VERSION }}"
+        env:
+          GH_TOKEN: ${{ github.token }}
