@@ -60,8 +60,19 @@ export const Route = createFileRoute("/")({
 - `<ImageDropZone />` — drag / paste / click upload surface.
 - `<ColorSwatchPicker />` — background color row with transparent (checker) swatch.
 - `<HowItWorks />` — SEO-friendly explainer block.
+- `<MemeButton />` — kit-styled button (variants: `primary`, `secondary`).
+- `<RangeSlider />` — labeled slider for tunable scalar params (intensity, blur, etc).
+- `<MadeWithMemeKitFooter />` — drop-in footer with npm + GitHub + demo + Lovable links.
+
+## Hooks
+
+- `useImageFile()` — file upload state + FileReader → dataURL → HTMLImageElement.
+- `useGifEncoder()` — gifenc-based animated GIF encoder with magenta chroma-key for transparent export. Pass a per-frame `drawFrame` callback.
+
+## Helpers
+
 - `memeHead()` — TanStack Router `head()` helper (meta, OG, Twitter, canonical, JSON-LD WebApplication).
-- `DEFAULT_MEME_COLORS` — 11-color palette including the `"transparent"` sentinel.
+- `DEFAULT_MEME_COLORS` — palette including the `"transparent"` sentinel.
 - `DEFAULT_MEME_BG` — recommended initial background (`"transparent"`).
 
 ## Requirements
