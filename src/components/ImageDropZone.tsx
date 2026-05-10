@@ -40,6 +40,7 @@ export function ImageDropZone({
   children,
   placeholder,
   style,
+  imageLoaded,
 }: ImageDropZoneProps) {
   const [dragOver, setDragOver] = useState(false);
 
