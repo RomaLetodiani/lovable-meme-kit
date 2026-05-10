@@ -99,6 +99,19 @@ export function ImageDropZone({
           />
         </label>
       )}
+      {children && !imageLoaded && (
+        <label
+          className="absolute inset-0 z-10 cursor-pointer"
+          aria-label="Click to upload image"
+        >
+          <input
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={(e) => handleFile(e.target.files?.[0])}
+          />
+        </label>
+      )}
     </div>
   );
 }
