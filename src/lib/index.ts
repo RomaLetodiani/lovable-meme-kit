@@ -16,5 +16,20 @@ export type { ColorSwatchPickerProps } from "../components/ColorSwatchPicker";
 export { HowItWorks } from "../components/HowItWorks";
 export type { HowItWorksProps } from "../components/HowItWorks";
 
+export { MemeButton } from "../components/MemeButton";
+export type { MemeButtonProps } from "../components/MemeButton";
+
+export { RangeSlider } from "../components/RangeSlider";
+export type { RangeSliderProps } from "../components/RangeSlider";
+
+export { MadeWithMemeKitFooter } from "../components/MadeWithMemeKitFooter";
+export type { MadeWithMemeKitFooterProps } from "../components/MadeWithMemeKitFooter";
+
+export { useImageFile } from "./use-image-file";
+export type { ImageFileState, UseImageFileResult } from "./use-image-file";
+
+export { useGifEncoder } from "./use-gif-encoder";
+export type { UseGifEncoderOptions, UseGifEncoderResult } from "./use-gif-encoder";
+
 export { memeHead } from "./meme-seo";
 export type { MemeHeadInput } from "./meme-seo";
