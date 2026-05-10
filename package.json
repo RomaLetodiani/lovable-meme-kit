@@ -1,7 +1,6 @@
 {
   "name": "lovable-meme-kit",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
   "description": "Drop-in React components and SEO helpers for building browser-based meme generators.",
   "keywords": ["meme", "meme-generator", "react", "components", "lovable"],
   "author": "Roman Letodiani",
