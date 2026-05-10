@@ -25,6 +25,15 @@ export type { RangeSliderProps } from "../components/RangeSlider";
 export { MadeWithMemeKitFooter } from "../components/MadeWithMemeKitFooter";
 export type { MadeWithMemeKitFooterProps } from "../components/MadeWithMemeKitFooter";
 
+export { MemeAppLayout } from "../components/MemeAppLayout";
+export type { MemeAppLayoutProps } from "../components/MemeAppLayout";
+
+export { MemeAppMain } from "../components/MemeAppMain";
+export type { MemeAppMainProps } from "../components/MemeAppMain";
+
+export { MemeActions } from "../components/MemeActions";
+export type { MemeActionsProps } from "../components/MemeActions";
+
 export { TemplateMemeCanvas } from "../components/TemplateMemeCanvas";
 export type {
   TemplateMemeCanvasProps,
