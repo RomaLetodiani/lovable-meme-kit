@@ -11,6 +11,8 @@ export interface MemeTitleProps {
   variant?: "rainbow" | "glow";
   /** Font for prefix + title. Map a class to your project's @font-face. */
   fontClass?: string;
+  /** Heading level for the title. Defaults to 1. Use 2+ when not the page hero. */
+  as?: "h1" | "h2" | "h3" | "div";
   className?: string;
 }
 
@@ -25,13 +27,14 @@ export function MemeTitle({
   tagline,
   variant = "rainbow",
   fontClass,
+  as: Heading = "h1",
   className,
 }: MemeTitleProps) {
   const titleClass = variant === "rainbow" ? "title-rainbow" : "title-glow";
 
   return (
     <header className={cn("text-center mb-6", className)}>
-      <h1 className="leading-tight">
+      <Heading className="leading-tight">
         {prefix && (
           <span
             className={cn(
@@ -51,7 +54,7 @@ export function MemeTitle({
         >
           {title}
         </span>
-      </h1>
+      </Heading>
       {tagline && (
         <p className="text-sm text-muted-foreground mt-2">{tagline}</p>
       )}
