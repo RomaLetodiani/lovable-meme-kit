@@ -23,6 +23,13 @@ export const DEFAULT_MEME_COLORS = [
   "#000000",
 ] as const;
 
+/**
+ * Recommended initial background color for meme generators.
+ * Renders the checker pattern via the `bg-checker` utility class.
+ * Equal to `DEFAULT_MEME_COLORS[0]` by convention.
+ */
+export const DEFAULT_MEME_BG = "transparent" as const;
+
 export interface ColorSwatchPickerProps {
   value: string;
   onChange: (color: string) => void;
