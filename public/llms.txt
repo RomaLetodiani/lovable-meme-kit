@@ -1,0 +1,19 @@
+# Lovable Meme Kit
+
+> A reusable component library and pattern playbook for building browser-based meme generators with TanStack Start, React, and Tailwind. Distributed on npm as `lovable-meme-kit`.
+
+## Components
+
+- MemeTitle — Hero title with rainbow or glow gradient variants
+- ImageDropZone — Composable upload surface with drag, drop, paste, and click
+- ColorSwatchPicker — Background color row including a transparent checker swatch
+- HowItWorks — SEO-friendly explainer section for the bottom of meme pages
+
+## Helpers
+
+- memeHead() — Returns a complete TanStack route head() with title, description, OG tags, Twitter tags, canonical link, and WebApplication JSON-LD
+
+## Links
+
+- Showcase: https://memekit.lovable.app/
+- Source: https://github.com/RomaLetodiani/lovable-meme-kit
