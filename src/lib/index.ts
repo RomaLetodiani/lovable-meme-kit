@@ -9,6 +9,7 @@ export type { ImageDropZoneProps } from "../components/ImageDropZone";
 export {
   ColorSwatchPicker,
   DEFAULT_MEME_COLORS,
+  DEFAULT_MEME_BG,
 } from "../components/ColorSwatchPicker";
 export type { ColorSwatchPickerProps } from "../components/ColorSwatchPicker";
 
