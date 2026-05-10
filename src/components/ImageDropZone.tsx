@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-interface ImageDropZoneProps {
+export interface ImageDropZoneProps {
   onFile: (file: File) => void;
   /** Listen for global paste events. Default true. */
   enablePaste?: boolean;
