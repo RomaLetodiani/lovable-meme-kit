@@ -48,6 +48,7 @@ function Library() {
             title="INTENSIFIES"
             variant="glow"
             fontClass="font-impact"
+            as="h3"
           />
         </Section>
 
