@@ -3,15 +3,24 @@ import { cn } from "@/lib/utils";
 export const DEFAULT_MEME_COLORS = [
   "transparent",
   "#ffffff",
-  "#000000",
   "#e53935",
+  "#ef6c00",
   "#fb8c00",
   "#fdd835",
+  "#c0ca33",
+  "#7cb342",
   "#43a047",
+  "#00897b",
+  "#26c6da",
   "#039be5",
+  "#1e88e5",
   "#3949ab",
+  "#5e35b1",
   "#8e24aa",
   "#d81b60",
+  "#f06292",
+  "#8d6e63",
+  "#000000",
 ] as const;
 
 export interface ColorSwatchPickerProps {
