@@ -14,7 +14,7 @@ export const DEFAULT_MEME_COLORS = [
   "#d81b60",
 ] as const;
 
-interface ColorSwatchPickerProps {
+export interface ColorSwatchPickerProps {
   value: string;
   onChange: (color: string) => void;
   colors?: readonly string[];

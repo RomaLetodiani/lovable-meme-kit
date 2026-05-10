@@ -14,7 +14,7 @@
  *   });
  */
 
-interface MemeHeadInput {
+export interface MemeHeadInput {
   title: string;
   description: string;
   url: string;

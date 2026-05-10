@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-interface HowItWorksProps {
+export interface HowItWorksProps {
   title?: string;
   paragraphs: ReactNode[];
   className?: string;

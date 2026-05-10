@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-interface MemeTitleProps {
+export interface MemeTitleProps {
   /** Small line above the main title. */
   prefix?: string;
   /** The big gradient title. */
