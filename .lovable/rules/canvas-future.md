@@ -48,3 +48,7 @@ OMY's `src/components/MemeCanvas.tsx`:
 - Konva is a heavy dep (~150KB). Alternative for simpler layouts: pure HTML/CSS positioning of `<img>` elements with `react-rnd` for drag/resize.
 
 Defer until at least one more app is in scope. Once we have 2 real consumers, the right shape will be obvious from triangulating the actual needs.
+
+## v1.2.0 status
+
+Shipped 2026-05-10. `<TemplateMemeCanvas>` + `exportStageToPng` exported. v1.0 of the API supports single-hotspot pattern (matches OMY usage and the planned Stonks-ify / GOAT-ify shape). Multi-hotspot + caption + responsive sizing remain v1.3+ scope.
