@@ -1,0 +1,79 @@
+/* ============================================================
+ * Meme generator shared utilities
+ * ============================================================ */
+
+@font-face {
+  font-family: "Homer Simpson Revised";
+  src: url("https://fonts.cdnfonts.com/s/12880/Homer%20Simpson%20Revised.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Impact Meme";
+  src: local("Impact"), local("Haettenschweiler"), local("Anton"), local("Oswald");
+  font-display: swap;
+}
+
+.font-homer {
+  font-family: "Homer Simpson Revised", system-ui, sans-serif;
+  font-weight: 400;
+}
+
+.font-impact {
+  font-family: "Impact Meme", "Impact", "Haettenschweiler", "Arial Narrow Bold", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Playful rainbow gradient title (Old Man Yells style) */
+.title-rainbow {
+  background: linear-gradient(135deg, #ff6a3d 0%, #ff5277 35%, #e23ea3 60%, #6a7bff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+  padding-bottom: 0.15em;
+}
+
+/* Hot orange glow title (INTENSIFIES style) */
+.title-glow {
+  background: linear-gradient(135deg, #ff3d00 0%, #ff9100 50%, #ffea00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(255, 110, 0, 0.35);
+}
+
+/* Checker pattern for "transparent" backgrounds in canvases & swatches */
+.bg-checker {
+  background-image:
+    linear-gradient(45deg, #ccc 25%, transparent 25%),
+    linear-gradient(-45deg, #ccc 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ccc 75%),
+    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  background-color: #fff;
+}
+
+/* "[X] intensifies" shake animation. Set --shake-x and --shake-r to tune. */
+@keyframes meme-shake {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  10%  { transform: translate(calc(var(--shake-x) * -0.6), calc(var(--shake-x) * 0.4)) rotate(calc(var(--shake-r) * -1)); }
+  20%  { transform: translate(calc(var(--shake-x) * 0.5), calc(var(--shake-x) * -0.5)) rotate(calc(var(--shake-r) * 0.7)); }
+  30%  { transform: translate(calc(var(--shake-x) * -0.4), calc(var(--shake-x) * -0.3)) rotate(calc(var(--shake-r) * -0.7)); }
+  40%  { transform: translate(calc(var(--shake-x) * 0.6), calc(var(--shake-x) * 0.3)) rotate(var(--shake-r)); }
+  50%  { transform: translate(calc(var(--shake-x) * -0.5), calc(var(--shake-x) * 0.5)) rotate(calc(var(--shake-r) * -0.3)); }
+  60%  { transform: translate(calc(var(--shake-x) * 0.4), calc(var(--shake-x) * -0.4)) rotate(calc(var(--shake-r) * 0.7)); }
+  70%  { transform: translate(calc(var(--shake-x) * -0.6), calc(var(--shake-x) * 0.2)) rotate(calc(var(--shake-r) * -1)); }
+  80%  { transform: translate(calc(var(--shake-x) * 0.3), calc(var(--shake-x) * 0.6)) rotate(calc(var(--shake-r) * 0.3)); }
+  90%  { transform: translate(calc(var(--shake-x) * -0.3), calc(var(--shake-x) * -0.5)) rotate(calc(var(--shake-r) * -0.7)); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.animate-intensify {
+  --shake-x: 6px;
+  --shake-r: 3deg;
+  animation: meme-shake 0.18s linear infinite;
+}
