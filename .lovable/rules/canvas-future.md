@@ -52,3 +52,7 @@ Defer until at least one more app is in scope. Once we have 2 real consumers, th
 ## v1.2.0 status
 
 Shipped 2026-05-10. `<TemplateMemeCanvas>` + `exportStageToPng` exported. v1.0 of the API supports single-hotspot pattern (matches OMY usage and the planned Stonks-ify / GOAT-ify shape). Multi-hotspot + caption + responsive sizing remain v1.3+ scope.
+
+## v1.3.0 status
+
+Shipped 2026-05-10. `useTemplateMemeGif` hook added — combines the v1.2 canvas with `useGifEncoder` for canvas+GIF combo apps. Powers Catjam-ify and similar "static template + bop/pulse animation + draggable user image" meme generators. The hook reads the live stage state at generate() time (so user drag/transform survives into the GIF) and applies a per-frame `animate()` callback for translation/rotation/scale deltas.
