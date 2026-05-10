@@ -19,12 +19,12 @@ import {
   ImageDropZone,
   ColorSwatchPicker,
   HowItWorks,
-  DEFAULT_MEME_COLORS,
+  DEFAULT_MEME_BG,
 } from "lovable-meme-kit";
 import "lovable-meme-kit/styles.css";
 
 export function App() {
-  const [bg, setBg] = useState("#ffffff");
+  const [bg, setBg] = useState(DEFAULT_MEME_BG);
 
   return (
     <>
@@ -62,6 +62,7 @@ export const Route = createFileRoute("/")({
 - `<HowItWorks />` — SEO-friendly explainer block.
 - `memeHead()` — TanStack Router `head()` helper (meta, OG, Twitter, canonical, JSON-LD WebApplication).
 - `DEFAULT_MEME_COLORS` — 11-color palette including the `"transparent"` sentinel.
+- `DEFAULT_MEME_BG` — recommended initial background (`"transparent"`).
 
 ## Requirements
 
