@@ -69,7 +69,7 @@ function Library() {
               {preview ? (
                 <img
                   src={preview}
-                  alt="preview"
+                  alt="Uploaded image preview inside the meme drop zone"
                   className="w-full h-full object-contain"
                 />
               ) : undefined}
