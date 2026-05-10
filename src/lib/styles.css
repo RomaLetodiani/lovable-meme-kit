@@ -77,3 +77,31 @@
   --shake-r: 3deg;
   animation: meme-shake 0.18s linear infinite;
 }
+
+/* Vertical bob — for celebratory previews (Party-ify, etc.). */
+@keyframes meme-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-bob {
+  animation: meme-bob 0.9s ease-in-out infinite;
+}
+
+/* Rainbow hue-rotate cycle — for power/strobe previews (Star Power, etc.). */
+@keyframes meme-strobe {
+  0% { filter: hue-rotate(0deg) saturate(1.5); transform: scale(1); }
+  50% { filter: hue-rotate(180deg) saturate(1.5); transform: scale(1.04); }
+  100% { filter: hue-rotate(360deg) saturate(1.5); transform: scale(1); }
+}
+.animate-strobe {
+  animation: meme-strobe 1.6s linear infinite;
+}
+
+/* Head-bop translate — for music/rhythm previews (Catjam-ify, etc.). */
+@keyframes meme-bop {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+.animate-bop {
+  animation: meme-bop 0.4s ease-in-out infinite;
+}
