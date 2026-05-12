@@ -36,6 +36,7 @@ export function memeHead({
     { property: "og:description", content: description },
     { property: "og:url", content: url },
     { property: "og:type", content: "website" },
+    { property: "og:site_name", content: appName },
     { name: "twitter:card", content: ogImage ? "summary_large_image" : "summary" },
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
@@ -54,7 +55,7 @@ export function memeHead({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "WebApplication",
+          "@type": "SoftwareApplication",
           name: appName,
           url,
           description,
