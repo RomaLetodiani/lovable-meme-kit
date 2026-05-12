@@ -97,3 +97,58 @@ export const Route = createFileRoute("/")({
 ## License
 
 MIT
+
+## SEO essentials
+
+`memeHead()` covers the per-route head tags (title, meta, OG, Twitter, canonical, JSON-LD). The pieces below are per-app boilerplate the kit cannot ship for you — copy them into each new meme app.
+
+### `public/robots.txt`
+
+```
+User-agent: *
+Allow: /
+
+Sitemap: https://YOUR-APP.lovable.app/sitemap.xml
+```
+
+### `public/llms.txt`
+
+```
+# YOUR-APP
+
+> One-line description of what the app does.
+
+## Pages
+
+- [Home](/): What the home page does.
+```
+
+### `src/routes/sitemap[.]xml.ts`
+
+Use the `memeSitemapRoute` helper — three lines:
+
+```ts
+import { createFileRoute } from "@tanstack/react-router";
+import { memeSitemapRoute } from "lovable-meme-kit";
+
+export const Route = createFileRoute("/sitemap.xml")(
+  memeSitemapRoute({ baseUrl: "https://YOUR-APP.lovable.app" })
+);
+```
+
+Pass `paths: ["/", "/about", ...]` to add more routes (defaults to `["/"]`).
+
+### `src/routes/__root.tsx` defaults
+
+Replace the generic "Lovable App" / "Lovable Generated Project" defaults with app-specific ones — `memeHead()` will override these per route, but the root values are the fallback for any route that doesn't set its own:
+
+```tsx
+meta: [
+  { charSet: "utf-8" },
+  { name: "viewport", content: "width=device-width, initial-scale=1" },
+  { title: "YOUR APP — Subtitle" },
+  { name: "description", content: "One-line description." },
+  { property: "og:type", content: "website" },
+  // ... memeHead handles per-route overrides
+],
+```

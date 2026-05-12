@@ -23,8 +23,8 @@ export const Route = createFileRoute("/")({
 ```
 
 This emits: `<title>`, `meta description`, `og:title/description/url/type`,
-twitter card tags, `<link rel="canonical">`, and a `WebApplication` JSON-LD
-script with `price: "0"`.
+`og:site_name`, twitter card tags, `<link rel="canonical">`, and a
+`SoftwareApplication` JSON-LD script with `price: "0"`.
 
 ## 2. Title rules
 
@@ -52,9 +52,11 @@ not stuffed.
 
 ## 6. Sitemap & robots
 
-Both are pre-wired in this template (`src/routes/sitemap[.]xml.ts`,
-`public/robots.txt`). Update `BASE_URL` in `sitemap[.]xml.ts` to the deployed
-URL before publishing, and add new routes to its `entries` array.
+Use the `memeSitemapRoute()` helper from the kit in
+`src/routes/sitemap[.]xml.ts` — three-line file, just pass `baseUrl` (and
+optional `paths`). Pair it with a `public/robots.txt` and a `public/llms.txt`.
+See the **SEO essentials** section in the kit's README for the exact
+templates plus the `__root.tsx` defaults cleanup.
 
 ## 7. Image alt text
 
