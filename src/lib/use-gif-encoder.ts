@@ -22,6 +22,17 @@ export interface UseGifEncoderOptions {
   drawFrame: (ctx: CanvasRenderingContext2D, frameIndex: number, frameCount: number) => void;
   /** Filename for the downloaded GIF. Default "meme.gif". */
   filename?: string;
+  /**
+   * When true, route drawFrame's output through a transparent offscreen canvas,
+   * threshold the alpha channel to 0/255, then composite the hardened result onto
+   * the encoder canvas. Eliminates soft-edge fringing on transparent-bg GIFs
+   * (sprites with anti-aliased edges otherwise blend with the magenta chroma-key
+   * and produce a purple/pink halo in the output).
+   *
+   * Default: auto-on when bgColor === "transparent", auto-off otherwise. Explicit
+   * `true`/`false` overrides the auto behavior.
+   */
+  hardenAlpha?: boolean;
 }
 
 export interface UseGifEncoderResult {
@@ -51,27 +62,56 @@ export function useGifEncoder(options: UseGifEncoderOptions): UseGifEncoderResul
       bgColor,
       drawFrame,
       filename = "meme.gif",
+      hardenAlpha,
     } = options;
 
     setBusy(true);
     try {
-      const canvas = document.createElement("canvas");
-      canvas.width = width;
-      canvas.height = height;
-      const ctx = canvas.getContext("2d", { willReadFrequently: true })!;
-      const transparentMode = bgColor === "transparent";
+      const isTransparent = bgColor === "transparent";
+      const shouldHarden = hardenAlpha ?? isTransparent;
+
+      const encCanvas = document.createElement("canvas");
+      encCanvas.width = width;
+      encCanvas.height = height;
+      const encCtx = encCanvas.getContext("2d", { willReadFrequently: true });
+      if (!encCtx) throw new Error("Failed to acquire 2D context");
+
+      let offCanvas: HTMLCanvasElement | null = null;
+      let offCtx: CanvasRenderingContext2D | null = null;
+      if (shouldHarden) {
+        offCanvas = document.createElement("canvas");
+        offCanvas.width = width;
+        offCanvas.height = height;
+        offCtx = offCanvas.getContext("2d", { willReadFrequently: true });
+        if (!offCtx) throw new Error("Failed to acquire offscreen 2D context");
+      }
 
       const gif = GIFEncoder();
       for (let i = 0; i < frames; i++) {
-        ctx.fillStyle = transparentMode ? CHROMA : bgColor;
-        ctx.fillRect(0, 0, width, height);
-        drawFrame(ctx, i, frames);
+        encCtx.fillStyle = isTransparent ? CHROMA : bgColor;
+        encCtx.fillRect(0, 0, width, height);
 
-        const { data } = ctx.getImageData(0, 0, width, height);
+        if (offCtx && offCanvas) {
+          offCtx.clearRect(0, 0, width, height);
+          drawFrame(offCtx, i, frames);
+
+          const img = offCtx.getImageData(0, 0, width, height);
+          const d = img.data;
+          for (let j = 3; j < d.length; j += 4) {
+            d[j] = d[j] >= 128 ? 255 : 0;
+          }
+          offCtx.putImageData(img, 0, 0);
+
+          encCtx.drawImage(offCanvas, 0, 0);
+        } else {
+          drawFrame(encCtx, i, frames);
+        }
+
+        const { data } = encCtx.getImageData(0, 0, width, height);
         const palette = quantize(data, 256);
         const index = applyPalette(data, palette);
         let frameOpts: Record<string, unknown> = { palette, delay };
-        if (transparentMode) {
+        if (isTransparent) {
           let best = 0;
           let bestD = Infinity;
           for (let p = 0; p < palette.length; p++) {
