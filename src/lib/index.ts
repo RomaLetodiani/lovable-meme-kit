@@ -60,3 +60,6 @@ export type {
 
 export { memeHead } from "./meme-seo";
 export type { MemeHeadInput } from "./meme-seo";
+
+export { memeSitemapRoute } from "./meme-sitemap";
+export type { MemeSitemapOptions } from "./meme-sitemap";
